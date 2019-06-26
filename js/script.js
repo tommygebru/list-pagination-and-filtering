@@ -21,7 +21,7 @@ const appendPageLinks = (list) => {
 
 	let byTen = Math.round(list.length / pageLength);
 	if(list.length % 10 !== 0){
-	byTen+=1;	
+	byTen+=1;
 	}
 
 	const page = document.querySelector(".page");
@@ -42,12 +42,11 @@ const appendPageLinks = (list) => {
 
 	//Set Action Function
 	const setAction = (event) => {
-		let selectLink = document.querySelectorAll("a");
-		for (let i = 0; i < selectLink.length; i++) {
-			selectLink[i].addEventListener('click', (event) => {
+			for (let i = 0; i < a.length; i++) {
+				a[i].addEventListener('click', (event) => {
 				event.preventDefault();
 				a[0].classList.remove("active");
-				for (let n = 0; n < selectLink.length; n++) {
+				for (let n = 0; n < a.length; n++) {
 					a[n].classList.remove("active");
 					event.target.classList.add("active");
 					showPage(studentList, event.target.textContent);
