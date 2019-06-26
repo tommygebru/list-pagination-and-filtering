@@ -3,6 +3,7 @@ const studentList = document.querySelectorAll("LI");
 const pageLength = 10;
 
 //Show Page Function
+//Display list of students based on pageLength
 const showPage = (list, page) => {
 	let startIndex = (page * pageLength) - pageLength;
 	let endIndex = (page * pageLength) - 1;
@@ -17,6 +18,7 @@ const showPage = (list, page) => {
 showPage(studentList, 1);
 
 //Append Page Links Function
+//Dynamically adds html pagination based on studentList
 const appendPageLinks = (list) => {
 	let byTen = Math.round(list.length / pageLength);
 	if (list.length % 10 !== 0) {
