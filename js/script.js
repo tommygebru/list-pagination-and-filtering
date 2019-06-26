@@ -18,12 +18,10 @@ showPage(studentList, 1);
 
 //Append Page Links Function
 const appendPageLinks = (list) => {
-
 	let byTen = Math.round(list.length / pageLength);
-	if(list.length % 10 !== 0){
-	byTen+=1;
-	}
-
+	if (list.length % 10 !== 0) {
+		byTen += 1;
+	} //if
 	const page = document.querySelector(".page");
 	const pagination = document.createElement("DIV");
 	const ul = document.createElement("UL");
@@ -39,20 +37,15 @@ const appendPageLinks = (list) => {
 	} //loop
 	let a = document.querySelectorAll(".pagination ul li a");
 	a[0].classList.add("active");
-
-	//Set Action Function
-	const setAction = (event) => {
-			for (let i = 0; i < a.length; i++) {
-				a[i].addEventListener('click', (event) => {
-				event.preventDefault();
-				for (let n = 0; n < a.length; n++) {
-					a[n].classList.remove("active");
-					event.target.classList.add("active");
-					showPage(studentList, event.target.textContent);
-				} //second loop
-			}); //eventListener
-		} //loop
-	}; //end function
-	setAction();
+	for (let i = 0; i < a.length; i++) {
+		a[i].addEventListener('click', (event) => {
+			event.preventDefault();
+			for (let n = 0; n < a.length; n++) {
+				a[n].classList.remove("active");
+				event.target.classList.add("active");
+				showPage(studentList, event.target.textContent);
+			} //second loop
+		}); //eventListener
+	} //loop
 }; //END
 appendPageLinks(studentList);
