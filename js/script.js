@@ -1,7 +1,8 @@
 ///Global Variables
 const studentList = document.querySelectorAll("LI");
 const pageLength = 10;
-const pagesAre = Math.round(studentList.length / pageLength) + 1;
+
+//Show Page Function
 const showPage = (list, page) => {
 	let startIndex = (page * pageLength) - pageLength;
 	let endIndex = (page * pageLength) - 1;
@@ -14,7 +15,15 @@ const showPage = (list, page) => {
 	} //loop
 }; //END FUNCTION
 showPage(studentList, 1);
+
+//Append Page Links Function
 const appendPageLinks = (list) => {
+
+	let byTen = Math.round(list.length / pageLength);
+	if(list.length % 10 !== 0){
+	byTen+=1;	
+	}
+
 	const page = document.querySelector(".page");
 	const pagination = document.createElement("DIV");
 	const ul = document.createElement("UL");
@@ -23,13 +32,15 @@ const appendPageLinks = (list) => {
 	pagination.className = "pagination";
 	pagination.appendChild(ul);
 	ul.appendChild(li);
-	for (let i = 0; i < pagesAre; i++) {
+	for (let i = 0; i < byTen; i++) {
 		let newLink = document.createElement("A");
 		li.appendChild(newLink).href = "#";
 		newLink.textContent = i + 1;
 	} //loop
 	let a = document.querySelectorAll(".pagination ul li a");
 	a[0].classList.add("active");
+
+	//Set Action Function
 	const setAction = (event) => {
 		let selectLink = document.querySelectorAll("a");
 		for (let i = 0; i < selectLink.length; i++) {
@@ -43,7 +54,7 @@ const appendPageLinks = (list) => {
 				} //second loop
 			}); //eventListener
 		} //loop
-	}; //event
+	}; //end function
 	setAction();
 }; //END
-appendPageLinks(studentList.length);
+appendPageLinks(studentList);
