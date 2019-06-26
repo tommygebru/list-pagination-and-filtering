@@ -45,7 +45,6 @@ const appendPageLinks = (list) => {
 			for (let i = 0; i < a.length; i++) {
 				a[i].addEventListener('click', (event) => {
 				event.preventDefault();
-				a[0].classList.remove("active");
 				for (let n = 0; n < a.length; n++) {
 					a[n].classList.remove("active");
 					event.target.classList.add("active");
